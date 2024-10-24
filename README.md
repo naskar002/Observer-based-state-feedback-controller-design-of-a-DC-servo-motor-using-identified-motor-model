@@ -19,3 +19,15 @@ In this study, we employ **Full State Feedback Control** and **Luenberger Observ
 
 ### Hardware Diagram:
 ![Schematic Diagram](images/schematic.png)
+
+## Software Setup
+*   **Python:** Used for system identification and observer design simulations.
+*   **Arduino IDE:** For implementing the observer and controller on the hardware.
+
+### Used Libraries:
+* **NumPy**
+* **SciPy**
+* **Matplotlib**
+
+## Experimental Results
+* The observer successfully estimates the unmeasured states of the system, which are used for state feedback control.
