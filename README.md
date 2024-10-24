@@ -18,6 +18,4 @@ In this study, we employ **Full State Feedback Control** and **Luenberger Observ
 *   **Power Supply:** 12V DC power supply.
 
 ### Hardware Diagram:
-<p align="center">
-  <img src="C:\Users\RUPAPRIYA\OneDrive\Pictures\Screenshots\schematic.png" width="350" alt="accessibility text",title = "DC servo motor equivalent circuit diagram">
-</p>
+![Schematic Diagram](images/schematic.png)
