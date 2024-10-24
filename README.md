@@ -3,3 +3,5 @@ This repository contains various projects focused on aircraft control systems. T
 
 ### Key Features:
 *   **Flight Dynamics Simulations:** Simulating aircraft motion and dynamics in different environments.
+*   **Control System Design:** Implementation of PID and other control algorithms to stabilize and control aircraft behavior.
+
