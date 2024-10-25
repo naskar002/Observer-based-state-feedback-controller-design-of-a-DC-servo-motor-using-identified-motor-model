@@ -20,8 +20,8 @@ K = apc(A,B,desired_pole)
 # K = [5,2]
 
 # Luenberger observer gain (designed to estimate states accurately)
-L = np.array([[2],  # Try reducing the observer gains to avoid overflow
-              [3]])  # Reduced from 19200 to 500
+L = np.array([[240],  # Try reducing the observer gains to avoid overflow
+              [19200]])  # Reduced from 19200 to 500
 
 # Scaling term
 N_inv = -C @ np.linalg.inv(A - B @ K) @ B
