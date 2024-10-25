@@ -2,6 +2,7 @@ import numpy as np
 import scipy.linalg
 import matplotlib.pyplot as plt
 from ackermann import ackermann_pole_placement as apc
+import cmath
 
 # Declare Variables
 K_m = 1.695  # motor gain constant
