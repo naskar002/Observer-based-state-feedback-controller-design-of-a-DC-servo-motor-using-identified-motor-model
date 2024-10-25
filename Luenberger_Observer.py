@@ -19,9 +19,9 @@ desired_pole = np.array([-2,-3])
 K = apc(A,B,desired_pole)
 # K = [5,2]
 
-# Luenberger observer gain (designed to estimate states accurately)
-L = np.array([[240],  # Try reducing the observer gains to avoid overflow
-              [19200]])  # Reduced from 19200 to 500
+# Luenberger observer gain 
+L = np.array([[240],  
+              [19200]])  
 
 # Scaling term
 N_inv = -C @ np.linalg.inv(A - B @ K) @ B
@@ -73,7 +73,7 @@ def rk4_step(f, x, u, dt, *args):
 # Simulate the system and observer over time
 for i in range(len(t)):
     # Step input: 0 for t < 2s, 1 for t >= 2s
-    if t[i] < 2:
+    if t[i] < 0:
         r = np.array([[0]])  # Step input remains 0
     else:
         r = np.array([[1]])  # Step input changes to 1 after 2 seconds
@@ -111,23 +111,26 @@ plt.figure()
 
 # Plot true states and estimated states
 # plt.subplot(4, 1, 1)
-plt.plot(t, x_history[:, 0], label="True State x1")
-plt.plot(t, x_hat_history[:, 0], '--', label="Estimated State x1 (Observer)")
+plt.plot(t, x_history[:, 0], label="Plant position")
+plt.plot(t, x_hat_history[:, 0], '--', label="Observer position")
 plt.legend()
 plt.ylabel('angular displacement')
+plt.xlabel('time')
 
 plt.figure()
 # plt.subplot(4, 1, 2)
-plt.plot(t, x_history[:, 1], label="True State x2")
-plt.plot(t, x_hat_history[:, 1], '--', label="Estimated State x2 (Observer)")
+plt.plot(t, x_history[:, 1], label="Plant velocity")
+plt.plot(t, x_hat_history[:, 1], '--', label="Observer velocity")
 plt.legend()
 plt.ylabel('angular velocity')
+plt.xlabel('time')
 
 plt.figure()
 # plt.subplot(4, 1, 3)
 plt.plot(t, e_history[:,1], label="error")
 plt.legend()
 plt.ylabel('error')
+plt.xlabel('time')
 
 # Plot control input
 plt.figure()
@@ -135,6 +138,7 @@ plt.figure()
 plt.plot(t, u_history, label="Control Input u")
 plt.legend()
 plt.ylabel('Control Input')
+plt.xlabel('time')
 
 # Plot reference signal (sine wave)
 plt.figure()
