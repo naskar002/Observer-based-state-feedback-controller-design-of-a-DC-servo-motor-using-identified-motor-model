@@ -1,6 +1,7 @@
 import numpy as np
 import scipy.linalg
 import matplotlib.pyplot as plt
+from ackermann import ackermann_pole_placement as apc
 
 # Declare Variables
 K_m = 1.695  # motor gain constant
@@ -14,11 +15,13 @@ B = np.array([[0],
 C = np.array([[1, 0]])    # Output matrix
 
 # Feedback control gain (chosen for stability)
-K = np.array([[5, 6]])  # Design based on desired pole locations
+desired_pole = np.array([-2,-3])
+K = apc(A,B,desired_pole)
+# K = [5,2]
 
 # Luenberger observer gain (designed to estimate states accurately)
-L = np.array([[10],  # Try reducing the observer gains to avoid overflow
-              [500]])  # Reduced from 19200 to 500
+L = np.array([[2],  # Try reducing the observer gains to avoid overflow
+              [3]])  # Reduced from 19200 to 500
 
 # Scaling term
 N_inv = -C @ np.linalg.inv(A - B @ K) @ B
