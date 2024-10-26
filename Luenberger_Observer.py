@@ -16,7 +16,7 @@ B = np.array([[0],
 C = np.array([[1, 0]])    # Output matrix
 
 # Feedback control gain (chosen for stability)
-desired_pole = np.array([-2,-3])
+desired_pole = np.array([complex(-1.2,4),complex(-1.2,-4)])
 K = apc(A,B,desired_pole)
 # K = [5,2]
 
